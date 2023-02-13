@@ -16,7 +16,12 @@ LinqQueries queries = new LinqQueries();
 //Console.WriteLine( queries.ThereAreAny( 2045 ) );
 
 //Return if match with Category
-ImprimirValores( queries.AreCategory("Java") );
+//ImprimirValores( queries.AreCategory("Java") );
+
+//Return by category in order
+ImprimirValores( queries.OrderBy("Java") );
+
+ImprimirValores( queries.OrderBy2("Java") );
 
 void ImprimirValores( IEnumerable<Books> listaLibros){
     Console.WriteLine( "{0, -70} {1, 15}   {2, 11}\n", "Titulo", "N. Paginas", "F. Publicacion" );

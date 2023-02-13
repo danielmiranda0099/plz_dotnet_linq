@@ -44,4 +44,13 @@ public class LinqQueries {
     public IEnumerable<Books> AreCategory(string category) {
         return librosCollections.Where( book => book.Categories.Contains( category ) );
     }
+
+    public IEnumerable<Books> OrderBy(string category) {
+        var books = AreCategory( category );
+        return books.OrderBy( book => book.Title);
+    }
+
+    public IEnumerable<Books> OrderBy2(string category) {
+        return from book in librosCollections where book.Categories.Contains( category ) orderby book.Title, book.PageCount select book;
+    }
 }
