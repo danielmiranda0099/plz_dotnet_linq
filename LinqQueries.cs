@@ -32,4 +32,12 @@ public class LinqQueries {
         //Query expression
         return from book in librosCollections where book.PageCount > 250 && book.Title.Contains("in Action") select book;
     }
+
+    public bool ThereAreAll() {
+        return librosCollections.All( book => book?.Status != string.Empty );
+    }
+
+    public bool  ThereAreAny(int year) {
+        return librosCollections.Any( book => book.PublishedDate.Year == year );
+    }
 }

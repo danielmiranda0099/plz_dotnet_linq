@@ -8,7 +8,12 @@ LinqQueries queries = new LinqQueries();
 //ImprimirValores( queries.LibrosAfter2000() );
 
 //Libros con mas de 250 paginas y con el texto inclido In action
-ImprimirValores( queries.BooksPage() );
+//ImprimirValores( queries.BooksPage() );
+
+//if Status have ALL
+Console.WriteLine( queries.ThereAreAll() );
+//if year is have on ANY
+Console.WriteLine( queries.ThereAreAny( 2045 ) );
 
 void ImprimirValores( IEnumerable<Books> listaLibros){
     Console.WriteLine( "{0, -70} {1, 15}   {2, 11}\n", "Titulo", "N. Paginas", "F. Publicacion" );
