@@ -16,4 +16,20 @@ public class LinqQueries {
     public IEnumerable<Books> TodaLaColeccion() {
         return librosCollections;
     }
+
+    public IEnumerable<Books> LibrosAfter2000() {
+        //Queri extension method
+        //return librosCollections.Where( book => book.PublishedDate.Year > 2000 );
+
+        //Queri expression
+        return from book in librosCollections where book.PublishedDate.Year > 2000 select book;
+    }
+
+    public IEnumerable<Books> BooksPage() {
+        //Query extension Method
+        //return librosCollections.Where( book => book.PageCount > 250 && book.Title.Contains("in Action"));
+
+        //Query expression
+        return from book in librosCollections where book.PageCount > 250 && book.Title.Contains("in Action") select book;
+    }
 }
