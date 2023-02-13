@@ -53,4 +53,16 @@ public class LinqQueries {
     public IEnumerable<Books> OrderBy2(string category) {
         return from book in librosCollections where book.Categories.Contains( category ) orderby book.Title, book.PageCount select book;
     }
+
+    public IEnumerable<Books> Take(string category, int amount) {
+        IEnumerable<Books> books = AreCategory( category ).OrderByDescending( book => book.PublishedDate );
+        return books.Take( amount );
+
+    }
+
+    public IEnumerable<Books> Skip(int pages){
+        return librosCollections.Where( book => book.PageCount > pages )
+            .Skip( 2 )
+            .Take( 2 );
+    }
 }

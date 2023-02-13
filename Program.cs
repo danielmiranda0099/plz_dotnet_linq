@@ -19,9 +19,15 @@ LinqQueries queries = new LinqQueries();
 //ImprimirValores( queries.AreCategory("Java") );
 
 //Return by category in order
-ImprimirValores( queries.OrderBy("Java") );
+//ImprimirValores( queries.OrderBy("Java") );
 
-ImprimirValores( queries.OrderBy2("Java") );
+//ImprimirValores( queries.OrderBy2("Java") );
+
+
+//Return by category order by Date and take amount
+//ImprimirValores( queries.Take("Java", 3) );
+
+ImprimirValores( queries.Skip( 400 ) );
 
 void ImprimirValores( IEnumerable<Books> listaLibros){
     Console.WriteLine( "{0, -70} {1, 15}   {2, 11}\n", "Titulo", "N. Paginas", "F. Publicacion" );
