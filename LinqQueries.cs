@@ -40,4 +40,8 @@ public class LinqQueries {
     public bool  ThereAreAny(int year) {
         return librosCollections.Any( book => book.PublishedDate.Year == year );
     }
+
+    public IEnumerable<Books> AreCategory(string category) {
+        return librosCollections.Where( book => book.Categories.Contains( category ) );
+    }
 }

@@ -11,9 +11,12 @@ LinqQueries queries = new LinqQueries();
 //ImprimirValores( queries.BooksPage() );
 
 //if Status have ALL
-Console.WriteLine( queries.ThereAreAll() );
+//Console.WriteLine( queries.ThereAreAll() );
 //if year is have on ANY
-Console.WriteLine( queries.ThereAreAny( 2045 ) );
+//Console.WriteLine( queries.ThereAreAny( 2045 ) );
+
+//Return if match with Category
+ImprimirValores( queries.AreCategory("Java") );
 
 void ImprimirValores( IEnumerable<Books> listaLibros){
     Console.WriteLine( "{0, -70} {1, 15}   {2, 11}\n", "Titulo", "N. Paginas", "F. Publicacion" );
