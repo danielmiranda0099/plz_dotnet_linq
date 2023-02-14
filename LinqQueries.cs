@@ -118,8 +118,39 @@ public class LinqQueries {
         ).ToArray();
     }
     
+    //Operator AVERAGE
     public double AverageTitleLength() {
         return librosCollections.Where( book => book.Title.Length > 0 )
             .Average( book => book.Title.Length );
     }
+
+    //Operator GroupBy
+    public IEnumerable<IGrouping<int, Books>> GroupByYear() {
+        //return from b in books where b.PublishedDate.Year>=2000 group b by b.PublishedDate.Year;
+        return librosCollections.Where( book => book.PublishedDate.Year >= 2000 )
+        .GroupBy( book => book.PublishedDate.Year );
+    }
+
+    //Operator LookUp
+    public ILookup<char, Books> LookUpTitleChar() {
+        //return booksCollection.ToLookup(x => x.Title[0], x => x);
+        return librosCollections.ToLookup( book => book.Title[0], book => book );
+    }
+
+    //JOIN
+    public IEnumerable<Books> JoinBook() {
+        IEnumerable<Books> pagesBook = librosCollections.Where( book => book.PageCount >= 500 );
+        IEnumerable<Books> latesDate = librosCollections.Where( book => book.PublishedDate.Year > 2005 );
+
+        return latesDate.Join( pagesBook, ld => ld.Title, pb => pb.Title,  
+            (ld, pb) => ld
+        );
+
+        // return from booksAfter2005 in books 
+        //          join booksPublishedAfter2005 in books
+        //          on booksAfter2005.Title equals booksPublishedAfter2005.Title
+        //          where booksAfter2005.PageCount >= 500 && booksPublishedAfter2005.PublishedDate.Year > 2005
+        //          select booksAfter2005;
+    }
 }
+

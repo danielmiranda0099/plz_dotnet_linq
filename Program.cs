@@ -52,9 +52,16 @@ LinqQueries queries = new LinqQueries();
 // }
 
 //Operator Average
-Console.WriteLine( queries.AverageTitleLength() );
+//Console.WriteLine( queries.AverageTitleLength() );
 
+//ImprimirGrupo( queries.GroupByYear() );
 
+//LOOKUP
+// var filterBooks = queries.LookUpTitleChar();
+// ImprimirDiccionario(filterBooks, 'S');
+
+//JOIN
+ImprimirValores( queries.JoinBook() );
 
 void ImprimirValores( IEnumerable<Books> listaLibros){
     Console.WriteLine( "{0, -70} {1, 15}   {2, 11}\n", "Titulo", "N. Paginas", "F. Publicacion" );
@@ -62,4 +69,27 @@ void ImprimirValores( IEnumerable<Books> listaLibros){
     foreach(var item in listaLibros){ 
         Console.WriteLine( "{0, -70} {1, 15}   {2, 11}", item.Title, item.PageCount, item.PublishedDate.ToShortDateString() );
     }
+}
+
+void ImprimirGrupo(IEnumerable<IGrouping<int,Books>> ListadeLibros)
+{
+    foreach(var grupo in ListadeLibros)
+    {
+        Console.WriteLine("");
+        Console.WriteLine($"Grupo: { grupo.Key }");
+        Console.WriteLine("{0,-60} {1, 15} {2, 15}\n", "Titulo", "N. Paginas", "Fecha publicacion");
+        foreach(var item in grupo)
+        {
+            Console.WriteLine("{0,-60} {1, 15} {2, 15}",item.Title,item.PageCount,item.PublishedDate.Date.ToShortDateString()); 
+        }
+    }
+}
+
+void ImprimirDiccionario(ILookup<char, Books> ListadeLibros, char letra)
+{
+   Console.WriteLine("{0,-60} {1, 15} {2, 15}\n", "Titulo", "N. Paginas", "Fecha publicacion");
+   foreach(var item in ListadeLibros[letra])
+   {
+         Console.WriteLine("{0,-60} {1, 15} {2, 15}",item.Title,item.PageCount,item.PublishedDate.Date.ToShortDateString()); 
+   }
 }
