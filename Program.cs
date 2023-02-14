@@ -27,12 +27,14 @@ LinqQueries queries = new LinqQueries();
 //Return by category order by Date and take amount
 //ImprimirValores( queries.Take("Java", 3) );
 
-ImprimirValores( queries.Skip( 400 ) );
+//ImprimirValores( queries.Skip( 400 ) );
+
+ImprimirValores( queries.Select() );
 
 void ImprimirValores( IEnumerable<Books> listaLibros){
     Console.WriteLine( "{0, -70} {1, 15}   {2, 11}\n", "Titulo", "N. Paginas", "F. Publicacion" );
 
-    foreach(var item in listaLibros){
+    foreach(var item in listaLibros){ 
         Console.WriteLine( "{0, -70} {1, 15}   {2, 11}", item.Title, item.PageCount, item.PublishedDate.ToShortDateString() );
     }
 }

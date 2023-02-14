@@ -65,4 +65,12 @@ public class LinqQueries {
             .Skip( 2 )
             .Take( 2 );
     }
+
+    public IEnumerable<Books> Select() {
+        return librosCollections.Take( 3 )
+                                .Select( book => new Books {
+                                    Title = book.Title,
+                                    PageCount = book.PageCount
+                                });
+    }
 }
