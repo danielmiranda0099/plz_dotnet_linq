@@ -32,7 +32,17 @@ LinqQueries queries = new LinqQueries();
 //ImprimirValores( queries.Select() );
 
 //Operator of AGREGATION Count
-Console.WriteLine( queries.CountAmoundPages() );
+//Console.WriteLine( queries.CountAmoundPages() );
+
+//Operator Min
+Console.WriteLine( queries.MinDatePublished() );
+//Operator MAX
+Console.WriteLine( queries.MaxAmoungPages() );
+//Operator MinBy
+Console.WriteLine( queries.MinByAmoungPages().PageCount);
+//Operator MaxBy
+Console.WriteLine( queries.MaxByDatePublished().PublishedDate);
+
 
 
 void ImprimirValores( IEnumerable<Books> listaLibros){

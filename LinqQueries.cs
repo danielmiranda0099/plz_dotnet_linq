@@ -78,4 +78,24 @@ public class LinqQueries {
         //return librosCollections.Where( book => book.PageCount >= 200 && book.PageCount <= 500 ).Count();
         return librosCollections.Count( book => book.PageCount >= 200 && book.PageCount <= 500 );
     }
+
+    //Operator Min
+    public DateTime MinDatePublished() {
+        return librosCollections.Min( book => book.PublishedDate );
+    }
+
+    //Operator MAX
+    public int MaxAmoungPages() {
+        return librosCollections.Max( book => book.PageCount );
+    }
+
+    //MIN BY
+    public Books MinByAmoungPages() {
+        return librosCollections.Where( book => book.PageCount > 0 ).MinBy( book => book.PageCount );
+    }
+
+    //MAX BY
+    public Books MaxByDatePublished() {
+        return librosCollections.MaxBy( book => book.PublishedDate );
+    }
 }
