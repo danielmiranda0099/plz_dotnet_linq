@@ -98,4 +98,28 @@ public class LinqQueries {
     public Books MaxByDatePublished() {
         return librosCollections.MaxBy( book => book.PublishedDate );
     }
+
+    //Operator SUM
+    public int SumPages() {
+        return librosCollections.Where( book => book.PageCount > 0 && book.PageCount < 500 )
+                .Sum( book => book.PageCount );
+    }
+
+    //Opreator Agregate
+    public string[] AgregateLastPublished() {
+        return librosCollections.Where( book => book.PublishedDate.Year > 1990).Aggregate(
+            new List<string>(), (Titulos, next) => {
+                if(next.Title != string.Empty){
+                    Titulos.Add(next.Title);
+                    return Titulos;
+                }
+                return Titulos;
+            }
+        ).ToArray();
+    }
+    
+    public double AverageTitleLength() {
+        return librosCollections.Where( book => book.Title.Length > 0 )
+            .Average( book => book.Title.Length );
+    }
 }

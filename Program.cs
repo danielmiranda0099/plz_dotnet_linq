@@ -35,13 +35,24 @@ LinqQueries queries = new LinqQueries();
 //Console.WriteLine( queries.CountAmoundPages() );
 
 //Operator Min
-Console.WriteLine( queries.MinDatePublished() );
+//Console.WriteLine( queries.MinDatePublished() );
 //Operator MAX
-Console.WriteLine( queries.MaxAmoungPages() );
+//Console.WriteLine( queries.MaxAmoungPages() );
 //Operator MinBy
-Console.WriteLine( queries.MinByAmoungPages().PageCount);
+//Console.WriteLine( queries.MinByAmoungPages().PageCount);
 //Operator MaxBy
-Console.WriteLine( queries.MaxByDatePublished().PublishedDate);
+//Console.WriteLine( queries.MaxByDatePublished().PublishedDate);
+
+//Operator Sum
+//Console.WriteLine( queries.SumPages() );
+
+//Operator Aggregate
+// foreach(var item in queries.AgregateLastPublished()){
+//     Console.WriteLine(item);
+// }
+
+//Operator Average
+Console.WriteLine( queries.AverageTitleLength() );
 
 
 
