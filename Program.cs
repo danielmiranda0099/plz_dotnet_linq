@@ -29,7 +29,11 @@ LinqQueries queries = new LinqQueries();
 
 //ImprimirValores( queries.Skip( 400 ) );
 
-ImprimirValores( queries.Select() );
+//ImprimirValores( queries.Select() );
+
+//Operator of AGREGATION Count
+Console.WriteLine( queries.CountAmoundPages() );
+
 
 void ImprimirValores( IEnumerable<Books> listaLibros){
     Console.WriteLine( "{0, -70} {1, 15}   {2, 11}\n", "Titulo", "N. Paginas", "F. Publicacion" );

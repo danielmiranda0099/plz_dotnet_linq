@@ -73,4 +73,9 @@ public class LinqQueries {
                                     PageCount = book.PageCount
                                 });
     }
+
+    public int CountAmoundPages() {
+        //return librosCollections.Where( book => book.PageCount >= 200 && book.PageCount <= 500 ).Count();
+        return librosCollections.Count( book => book.PageCount >= 200 && book.PageCount <= 500 );
+    }
 }
